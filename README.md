@@ -1,6 +1,7 @@
 # Newsletter Scraper
 
-This program is meant to scrap the values needed for the newsletter, to compute the weekly and YTD returns and to create a table with the values.
+This project is meant to scrap the values needed for the newsletter, to compute the weekly and YTD returns and to create a table with the values.  This module is an early developer preview, and is not suitable for general usage yet. Features and implementation are subject to change.
+
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
