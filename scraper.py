@@ -16,10 +16,12 @@ from time import sleep
 from tickers import TICKERS
 from graph import to_table, save_fig
 import numpy as np
-
+import locale
+#%%
 # function meant to scrap the prices
 def scraper(ticker, asset_class):
     if asset_class in ("Yield","Commo","Index","FX"):
+        print(ticker)
         url = "https://www.bloomberg.com/quote/%s"%(ticker)
         myclass="price"
         page = urlopen(url)
@@ -59,7 +61,7 @@ def compute_data(price_list,path):
     ComputingTable['Last Week'] = ComputingTable['Today']
     ComputingTable.to_csv(path+"ComputingTable.csv")
     return ComputingTable
-
+#%%
 # Table is the table of data meant to be copy psated on the newsletter
 def format_table(ComputingTable,path):
     Table = pd.DataFrame()
@@ -67,17 +69,22 @@ def format_table(ComputingTable,path):
     Table['Today']=ComputingTable['Today'].values
     Table['Weekly Change']=ComputingTable['Weekly Change'].values
     Table['YTD'] = ComputingTable['YTD'].values
-    for i in range(12,len(Table)):
+    for i in range(12,len(Table)-1):
         Table['Today'][i]=pd.Series(Table['Today'][i]*100).apply('{0:.2f}%'.format)[0]
     for col in ['YTD','Weekly Change']:
         Table[col] = pd.Series(["{0:.2f}%".format(val * 100) for val in Table[col]], index = Table.index)
-    decimals = pd.Series([0,2,2, 2], index=['Securities', 'Today', 'Weekly Change', 'YTD'])
-    Table=Table.round(decimals)     
+    #decimals = pd.Series([0,2,2, 2], index=['Securities', 'Today', 'Weekly Change', 'YTD'])
+    #Table=Table.round(decimals)     
     for i in range(7):
         Table['Today'][i]=round(Table['Today'][i],0)
+    for i in range(7):
+        Table['Today'][i]='{:,}'.format(Table['Today'][i]).replace(',',' ')
+    Table['Today'][17]=round(Table['Today'][17],0)
+    Table['Today'][17]='{:,}'.format(Table['Today'][17]).replace(',',' ')
     TableStr=Table.astype(str)
     TableStr=TableStr.applymap(lambda x: str(x.replace('.',',')))
+    TableStr['Today']=TableStr['Today'].map(lambda x: str(x.replace(',0','')))
     TableStr.to_csv(path+"ValuesTable.csv")
-    save_fig(to_table(TableStr,'Table'),path,'Table.png')
+    save_fig(to_table(TableStr,'Table'),'Table.png',path)
     return TableStr
 
