@@ -20,7 +20,8 @@ def to_table(data, title, col_width=2.5, row_height=0.5, font_size=14,
         fig, ax = plt.subplots(figsize=size);
         ax.axis('off');
     #plt.title(title);
-    col_header = ['', 'As of '+ calendar.month_name[datetime.today().month][:3]+'. '+str(datetime.today().day)+ "th" ,'Weekly Change', 'YTD']
+    day = 'As of '+ calendar.month_name[datetime.today().month][:3]+'. '+str(datetime.today().day)+ "th"
+    col_header = ['', day ,'Weekly Change', 'YTD']
     col_labels = tuple(col_header)
     mpl_table = ax.table(cellText=data.values, bbox=bbox, colLabels=col_labels, cellLoc='center', **kwargs);
     mpl_table.auto_set_font_size(False);
@@ -49,4 +50,5 @@ def to_table(data, title, col_width=2.5, row_height=0.5, font_size=14,
     return fig;
 
 def save_fig(fig,name,path):
-    fig.savefig(path+name,bbox_inches='tight',pad_inches=0.0)
+        #day = '_As of '+ calendar.month_name[datetime.today().month][:3]+'.'+str(datetime.today().day)+ "th"
+        fig.savefig(path+name,bbox_inches='tight',pad_inches=0.0)
