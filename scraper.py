@@ -101,7 +101,7 @@ def format_table(ComputingTable,path):
     for col in ['YTD','Weekly Change']:
         Table.loc[:11,col] = pd.Series(["{0:.2f}%".format(val * 100) for val in Table.iloc[:12][col]], index = Table.iloc[:12].index)
         Table.loc[17:,col] = pd.Series(["{0:.2f}%".format(val * 100) for val in Table.iloc[17:][col]], index = Table.iloc[17:].index)
-        Table.loc[12:16,col] = pd.Series(["{0:.2f} bp".format(val * 100) for val in Table.iloc[12:17][col]], index = Table.iloc[12:17].index)
+        Table.loc[12:16,col] = pd.Series(["{0:.2f} bps".format(val) for val in Table.iloc[12:17][col]], index = Table.iloc[12:17].index)
         
     #decimals = pd.Series([0,2,2, 2], index=['Securities', 'Today', 'Weekly Change', 'YTD'])
     #Table=Table.round(decimals)     
