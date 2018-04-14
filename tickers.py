@@ -6,7 +6,7 @@ Created on Sun Nov 19 13:45:05 2017
 """
 
 TICKERS = {'INDU:IND':'Index', 'SPX:IND':'Index', 'UKX:IND':'Index', 'DAX:IND':'Index', 'CAC:IND':'Index', 'SHCOMP:IND':'Index', 'SX5E:IND':'Index', 'VIX:IND':'Index',
-               'CO1:COM':'Commo', 'XAUUSD:CUR':'FX','EURUSD:CUR':'FX', 'EURGBP:CUR':'FX','libor/american-dollar/usd-libor-interest-rate-3-months.aspx':'Rate','euribor/euribor-interest-3-months.aspx':'Rate','USGG10YR:IND':'Yield','GDBR10:IND':'Yield','GFRN10:IND':'Yield'}
+               'CO1:COM':'Commo', 'XAUUSD:CUR':'FX','EURUSD:CUR':'FX', 'EURGBP:CUR':'FX','libor/american-dollar/usd-libor-interest-rate-3-months.aspx':'Rate','euribor/euribor-interest-3-months.aspx':'Rate','USGG10YR:IND':'Yield','GDBR10:IND':'Yield','GFRN10:IND':'Yield','bitcoin':'Crypto'}
 
 ticker_fx = {'XAUUSD=X':'FX','EURUSD=X':'FX', 'EURGBP=X':'FX'}
 ticker_commo = {'CO1:COM':'Commo',}

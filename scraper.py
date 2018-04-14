@@ -53,7 +53,14 @@ def scraper(ticker, asset_class):
         data = soup.find(class_=myclass)
         price = data.find(align='center').get_text()
         price = str(float(price.replace('\xa0%',''))/100)
-        
+    elif asset_class == 'Crypto':
+        url = "https://coinmarketcap.com/currencies/" + ticker
+        myclass = "text-large2"
+        page = urlopen(url)
+        sleep(randint(1,3))
+        soup = BeautifulSoup(page,"lxml")
+        data = soup.find(class_=myclass)
+        price = data.contents[0]    
     else:
         print("Asset class not recognized")
     return price
