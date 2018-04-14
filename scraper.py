@@ -80,7 +80,7 @@ def compute_data(price_list,path):
     # YTD
     ComputingTable.iloc[:12]['YTD'] = (ComputingTable.iloc[:12]['Today']-ComputingTable.iloc[:12]['As of Jan 2nd'])/ComputingTable.iloc[:12]['As of Jan 2nd']
     ComputingTable.iloc[17]['YTD'] = (ComputingTable.iloc[17]['Today']-ComputingTable.iloc[17]['As of Jan 2nd'])/ComputingTable.iloc[17]['As of Jan 2nd']
-    ComputingTable.iloc[12:17]['YTD'] = (ComputingTable.iloc[12:17]['Today']-ComputingTable.iloc[12:17]['As of Jan 2nd'])/ComputingTable.iloc[12:17]['As of Jan 2nd']
+    ComputingTable.iloc[12:17]['YTD'] = (ComputingTable.iloc[12:17]['Today']-ComputingTable.iloc[12:17]['As of Jan 2nd'])*10000
     
     ComputingTable['Last Week'] = ComputingTable['Today']
     ComputingTable.to_csv(path+"MyComputingTable.csv")
