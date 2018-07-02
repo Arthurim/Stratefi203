@@ -91,7 +91,7 @@ def compute_data(price_list,path):
     
     ComputingTable['Last Week'] = ComputingTable['Today']
     ComputingTable.to_csv(path+"MyComputingTable.csv")
-    return 
+    return ComputingTable
 
 #%%
 # Table is the table of data meant to be copy psated on the newsletter
